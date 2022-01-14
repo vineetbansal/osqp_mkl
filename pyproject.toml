@@ -23,5 +23,5 @@ before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 
 [tool.cibuildwheel.windows]
 # What algebra do we want to build?
-environment = { OSQP_ALGEBRA="mkl" }
+environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:/Program Files (x86)/Intel/oneAPI" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
