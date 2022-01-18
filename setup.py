@@ -51,7 +51,7 @@ class CmdCMakeBuild(build_ext):
         check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 
-algebra = os.environ.get('OSQP_ALGEBRA', 'default')
+algebra = os.environ.get('OSQP_ALGEBRA', 'mkl')
 assert algebra in ('default', 'mkl', 'cuda')
 ext_name = f'osqp_{algebra}'
 ext_module = CMakeExtension(ext_name, cmake_args=[f'-DALGEBRA={algebra}'])
