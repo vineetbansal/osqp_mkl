@@ -20,5 +20,5 @@ environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="/opt/intel/oneapi/mkl/latest" }
 before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 
 [tool.cibuildwheel.windows]
-environment = { OSQP_ALGEBRA="mkla", MKL_ROOT="C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest" }
+environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
