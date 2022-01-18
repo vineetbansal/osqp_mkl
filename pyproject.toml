@@ -8,7 +8,7 @@ skip = "*-win32 *-manylinux_i686 *-musllinux_*"
 test-requires = ["pytest", "git+git://github.com/osqp/osqp-python.git@vb/pybind11", "mkl-devel"]
 # The OSQP_ALGEBRA envvar is not strictly required, since OSQP will pick up the "best" algebra available,
 #   but we can force the usage of a particular algebra by specifying this.
-test-command-linux = "OSQP_ALGEBRA=mkl LD_PRELOAD=/opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_core.so:/opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_sequential.so pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests"
+test-command = "OSQP_ALGEBRA=mkl LD_PRELOAD=/opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_core.so:/opt/intel/oneapi/mkl/latest/lib/intel64/libmkl_sequential.so pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests"
 # test-command = "OSQP_ALGEBRA=mkl pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests"
 
 [tool.cibuildwheel.linux]
