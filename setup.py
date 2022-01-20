@@ -30,6 +30,7 @@ class CmdCMakeBuild(build_ext):
         build_args = ['--config', cfg]
 
         if system() == "Windows":
+            cmake_args += ['-G', 'Visual Studio 16 2019']
             cmake_args += ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{}={}'.format(cfg.upper(), extdir)]
             if sys.maxsize > 2**32:
                 cmake_args += ['-A', 'x64']
@@ -47,6 +48,16 @@ class CmdCMakeBuild(build_ext):
         if ext.cmake_args is not None:
             cmake_args.extend(ext.cmake_args)
 
+        # What variables from the environment do we wish to pass on to cmake as variables?
+        cmake_env_vars = ('CMAKE_CUDA_COMPILER', 'CUDA_TOOLKIT_ROOT_DIR', 'MKL_DIR')
+        for cmake_env_var in cmake_env_vars:
+            cmake_var = os.environ.get(cmake_env_var)
+            if cmake_var:
+                cmake_args.extend([f'-D{cmake_env_var}={cmake_var}'])
+
+        if ext.cmake_args is not None:
+            cmake_args.extend(ext.cmake_args)
+            
         check_call(['cmake', ext.sourcedir] + cmake_args, cwd=self.build_temp)
         check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 

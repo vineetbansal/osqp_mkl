@@ -3,10 +3,6 @@
 set -e
 set -x
 
-#curl -L -nv -o cuda.exe https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda_11.2.2_461.33_win10.exe
-#./cuda.exe -s nvcc_11.2 cudart_11.2 cublas_dev_11.2 curand_dev_11.2
-#rm cuda.exe
-
 # See https://github.com/oneapi-src/oneapi-ci for installer URLs
 curl -L -nv -o webimage.exe https://registrationcenter-download.intel.com/akdlm/irc_nas/18418/w_BaseKit_p_2022.1.0.116_offline.exe
 ./webimage.exe -s -x -f webimage_extracted --log extract.log
