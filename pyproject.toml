@@ -26,4 +26,4 @@ before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:/Program Files (x86)/Intel/oneAPI/mkl/latest", MKL_DIR="C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib/cmake/mkl" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
 #test-command = "pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests"
-test-command = "bash -c \"pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests\""
+test-command = "bash -c \"pytest -s $(python -c 'import osqp; print(osqp.__path__[0])')/tests\""
