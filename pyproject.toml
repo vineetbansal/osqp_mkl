@@ -23,6 +23,6 @@ environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="/opt/intel/oneapi/mkl/latest" }
 before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 
 [tool.cibuildwheel.windows]
-environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest", MKL_DIR="C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest\\lib\\cmake\\mkl" }
+environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:/Program Files (x86)/Intel/oneAPI/mkl/latest", MKL_DIR="C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib/cmake/mkl" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
 test-command = "OSQP_ALGEBRA=mkl pytest -s $(python -c \"import osqp; print(osqp.__path__[0])\")/tests"
