@@ -10,9 +10,6 @@ skip = "*-win32 *-manylinux_i686 *-musllinux_*"
 # This entry can go away once the install_requires of osqp-mkl requires osqp>=something
 test-requires = ["pytest", "git+git://github.com/osqp/osqp-python.git@vb/pybind11", "mkl", "mkl-devel"]
 
-# During testing, the OSQP_ALGEBRA envvar is not strictly required since OSQP will pick up the "best" algebra available;
-# but we can force the usage of a particular algebra by specifying this.
-
 [tool.cibuildwheel.linux]
 environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="/opt/intel/oneapi/mkl/latest" }
 before-all = ".github/workflows/prepare_build_environment_linux_mkl.sh"
@@ -26,4 +23,4 @@ before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:/Program Files (x86)/Intel/oneAPI/mkl/latest", MKL_DIR="C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib/cmake/mkl" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
 repair-wheel-command = "delvewheel repair {wheel} --wheel-dir {dest_dir} --no-mangle-all --add-path \"C:/Program Files (x86)/Intel/oneAPI/mkl/latest/redist/intel64\" --add-dll \"mkl_sequential.2.dll;mkl_def.2.dll\""
-test-command = "bash -c \"pytest -s $(python -c 'import osqp; print(osqp.__path__[0])')/tests\""
+test-command = "bash -c \"OSQP_ALGEBRA=mkl pytest -s $(python -c 'import osqp; print(osqp.__path__[0])')/tests\""
