@@ -25,6 +25,6 @@ before-all = ".github/workflows/prepare_build_environment_macos_mkl.sh"
 [tool.cibuildwheel.windows]
 environment = { OSQP_ALGEBRA="mkl", MKL_ROOT="C:/Program Files (x86)/Intel/oneAPI/mkl/latest", MKL_DIR="C:/Program Files (x86)/Intel/oneAPI/mkl/latest/lib/cmake/mkl" }
 before-all = "bash .github/workflows/prepare_build_environment_windows_mkl.sh"
-repair-wheel-command = "delvewheel repair {wheel} --wheel-dir {dest_dir} --add-path \"C:/Program Files (x86)/Intel/oneAPI/mkl/latest/redist/intel64\" --add-dll mkl_intel_thread.2.dll"
+repair-wheel-command = "delvewheel repair {wheel} --wheel-dir {dest_dir} --no-mangle-all --add-path \"C:/Program Files (x86)/Intel/oneAPI/mkl/latest/redist/intel64\" --add-dll \"mkl_sequential.2.dll;mkl_def.2.dll\""
 test-command = "bash -c \"pytest -s $(python -c 'import osqp; print(osqp.__path__[0])')/tests\""
 #test-command = "bash -c \"python -c'import osqp_mkl'\""
