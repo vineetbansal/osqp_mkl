@@ -74,7 +74,7 @@ setup(name=ext_name,
       long_description=open('README.rst').read(),
       package_dir={'': 'src'},
       include_package_data=True,  # Include package data from MANIFEST.in
-      install_requires=['numpy>=1.7', 'scipy>=0.13.2', 'qdldl'],
+      install_requires=['numpy>=1.7', 'scipy>=0.13.2', 'qdldl', 'osqp1>=0.7'],
       license='Apache 2.0',
       url="https://osqp.org/",
       cmdclass={'build_ext': CmdCMakeBuild},
