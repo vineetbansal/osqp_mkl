@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 build = "cp3*"
 skip = "*-win32 *-manylinux_i686 *-musllinux_*"
 # TODO: Once osqp>=0.7 is on PyPI, "osqp" can be specified in test-requires and the following line removed
-before-test = "pip install --index-url https://test.pypi.org/simple \"vosqp>=0.7\""
+before-test = "pip install --index-url https://test.pypi.org/simple vosqp"
 test-requires = ["pytest", "mkl", "mkl-devel"]
 
 [tool.cibuildwheel.linux]
